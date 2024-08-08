@@ -12,3 +12,5 @@ Route::get('/', [birthdayController::class, 'index']); // Ganti rute untuk meman
 
 // Rute untuk karyawan
 Route::resource('employees', EmployeeController::class); // Menggunakan resource untuk CRUD
+Route::get('/employees/import/data', [EmployeeController::class, 'importPage'])->name('employees.importPage.data');
+Route::post('/employees/import/data', [EmployeeController::class, 'import'])->name('employees.import.data');

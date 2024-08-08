@@ -134,6 +134,12 @@
             font-weight: 600;
             font-family: Arial, Helvetica, sans-serif;
         }
+        
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     </style>
     <canvas class='salju' id='salju'></canvas>
 </head>

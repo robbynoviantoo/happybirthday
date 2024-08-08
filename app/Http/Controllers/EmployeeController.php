@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\EmployeeImport;
 
 class EmployeeController extends Controller
 {
@@ -72,5 +74,21 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete(); // Hapus karyawan
         return redirect()->route('employees.index')->with('status', 'Karyawan berhasil dihapus!'); // Redirect ke daftar karyawan dengan pesan sukses
+    }
+
+    public function importPage()
+    {
+        return view('employees.import');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        Excel::import(new EmployeeImport, $request->file('file'));
+
+        return redirect()->route('employees.index')->with('success', 'Defects imported successfully.');
     }
 }

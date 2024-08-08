@@ -9,6 +9,8 @@
 
                     <div class="card-body">
                         <a href="{{ route('employees.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
+                        <a href="{{ route('employees.importPage.data') }}" class="btn btn-warning mb-3 me-2">Import from
+                            Excel</a>
                         <table id="employeesTable" class="table table-striped">
                             <thead>
                                 <tr>
